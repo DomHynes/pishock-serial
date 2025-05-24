@@ -1,4 +1,4 @@
-import { EventEmitter } from 'events'
+import { EventEmitter } from 'node:events'
 import { SerialPort } from 'serialport'
 import { LINE_ENDING } from './constants'
 import { Logger } from './logger'
@@ -44,7 +44,7 @@ export class SerialPiShock extends EventEmitter<Events> {
     super()
     this.line = []
     port.on('data', this.handleData)
-    port.on('error', err =>
+    port.on('error', (err) =>
       this.logger.error({ err: err.toString() }, 'porterror'),
     )
   }
@@ -57,8 +57,8 @@ export class SerialPiShock extends EventEmitter<Events> {
 
   public async getInfo() {
     this.logger.info('getInfo')
-    const infoFuture = new Promise<PiShockDeviceInfo>(resolve => {
-      this.once('info', data => resolve(data))
+    const infoFuture = new Promise<PiShockDeviceInfo>((resolve) => {
+      this.once('info', (data) => resolve(data))
     })
 
     this.info()
@@ -71,7 +71,7 @@ export class SerialPiShock extends EventEmitter<Events> {
 
     const info = await this.getInfo()
 
-    const shockers = info.shockers.map(s => new Shocker(String(s.id), this))
+    const shockers = info.shockers.map((s) => new Shocker(String(s.id), this))
     this.shockers = shockers
 
     return shockers
@@ -108,7 +108,7 @@ export class SerialPiShock extends EventEmitter<Events> {
   }
 
   public write(data: any) {
-    this.port.write(JSON.stringify(data) + LINE_ENDING, err => {
+    this.port.write(JSON.stringify(data) + LINE_ENDING, (err) => {
       if (err) {
         console.error('Error on write: ', err)
       } else {

@@ -1,10 +1,10 @@
 import { EventEmitter } from 'events';
+import { afterEach, beforeEach, expect, it, vi } from 'vitest';
 import { SerialPiShock } from '../src';
 import { LINE_ENDING } from '../src/constants';
 import { MOCK_TERMINAL_INFO } from './constants';
-
 class MockSerialPort extends EventEmitter {
-  public write = jest.fn();
+  public write = vi.fn();
 }
 
 describe('SerialPiShock', () => {

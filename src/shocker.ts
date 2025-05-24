@@ -1,7 +1,10 @@
 import { SerialPiShock } from './pishock'
 
 export class Shocker {
-  constructor(public readonly id: string, public parent: SerialPiShock) {}
+  constructor(
+    public readonly id: string,
+    public parent: SerialPiShock,
+  ) {}
 
   end() {
     this.write({

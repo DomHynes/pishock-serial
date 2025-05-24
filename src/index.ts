@@ -20,7 +20,8 @@ const BAUD_RATE = 115200
 export async function getPiShock() {
   const allDevices = await SerialPort.list()
   const pishocks = allDevices.filter(
-    device => device.vendorId === VENDOR_ID && device.productId === PRODUCT_ID,
+    (device) =>
+      device.vendorId === VENDOR_ID && device.productId === PRODUCT_ID,
   )
 
   if (!pishocks[0]) throw new Error('could not find pishock')
