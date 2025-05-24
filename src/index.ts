@@ -1,6 +1,6 @@
-import { SerialPort } from 'serialport';
-import { SerialPiShock } from './pishock';
-import { Shocker } from './shocker';
+import { SerialPort } from 'serialport'
+import { SerialPiShock } from './pishock'
+import { Shocker } from './shocker'
 /*
     path: 'COM3',
     manufacturer: 'wch.cn',
@@ -12,26 +12,26 @@ import { Shocker } from './shocker';
     productId: '7523'
 */
 
-const VENDOR_ID = '1A86';
-const PRODUCT_ID = '7523';
+const VENDOR_ID = '1A86'
+const PRODUCT_ID = '7523'
 
-const BAUD_RATE = 115200;
+const BAUD_RATE = 115200
 
 export async function getPiShock() {
-  const allDevices = await SerialPort.list();
+  const allDevices = await SerialPort.list()
   const pishocks = allDevices.filter(
-    device => device.vendorId === VENDOR_ID && device.productId === PRODUCT_ID
-  );
+    device => device.vendorId === VENDOR_ID && device.productId === PRODUCT_ID,
+  )
 
-  if (!pishocks[0]) throw new Error('could not find pishock');
+  if (!pishocks[0]) throw new Error('could not find pishock')
 
   const pishock = new SerialPiShock(
-    new SerialPort({ path: pishocks[0].path, baudRate: BAUD_RATE })
-  );
+    new SerialPort({ path: pishocks[0].path, baudRate: BAUD_RATE }),
+  )
 
-  await pishock.getInfo();
+  await pishock.getInfo()
 
-  return pishock;
+  return pishock
 }
 
-export { SerialPiShock, Shocker };
+export { SerialPiShock, Shocker }

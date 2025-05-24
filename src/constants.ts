@@ -1,1 +1,1 @@
-export const LINE_ENDING = '\r\n';
+export const LINE_ENDING = '\r\n'
