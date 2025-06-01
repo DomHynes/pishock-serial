@@ -1,7 +1,7 @@
 {
   "name": "serial-pishock",
   "author": "Dom Hynes",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "license": "MIT",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
@@ -22,9 +22,9 @@
     "vitest": "^3.1.4"
   },
   "dependencies": {
-    "tslib": "^2.8.1",
     "roarr": "^7.21.1",
-    "serialport": "^13.0.0"
+    "serialport": "^13.0.0",
+    "tslib": "^2.8.1"
   },
   "prettier": {
     "printWidth": 80,
