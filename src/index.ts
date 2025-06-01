@@ -1,4 +1,5 @@
 import { SerialPort } from 'serialport'
+import type { PiShockDeviceInfo } from './pishock'
 import { SerialPiShock } from './pishock'
 import { Shocker } from './shocker'
 /*
@@ -36,3 +37,5 @@ export async function getPiShock() {
 }
 
 export { SerialPiShock, Shocker }
+export type { PiShockDeviceInfo }
+

@@ -4,7 +4,7 @@ import { LINE_ENDING } from './constants'
 import { Logger } from './logger'
 import { Shocker } from './shocker'
 
-type PiShockDeviceInfo = {
+export type PiShockDeviceInfo = {
   version: string // The running firmware version
   type: 3 | 4 // Hardware type: 3 for Next, 4 for Lite
   connected: boolean // Is the PiShock connected to the server?
